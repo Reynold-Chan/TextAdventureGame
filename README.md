@@ -1,5 +1,5 @@
 # TextAdventureGame
-Just having fun :) Trying to implement a text adventure game in python
+Just having fun , it's my first real project on my on. Trying to implement a text adventure game in python
 
 # Running
 Download Anaconda, execute game.py for the loop and enjoy in console :) 
