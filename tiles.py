@@ -29,6 +29,7 @@ class MapTile:
         """Returns all of the available actions in this room."""
         moves = self.adjacent_moves()
         moves.append(actions.ViewInventory())
+        moves.append(actions.Heal())
 
         return moves
 
@@ -47,6 +48,7 @@ class StartingRoom(MapTile):
 
 
 class LootRoom(MapTile):
+    Visited: bool = False
     def intro_text(self):
         pass
 
@@ -58,7 +60,11 @@ class LootRoom(MapTile):
         player.inventory.append(self.item)
 
     def modify_player(self, player):
-        self.add_loot(player)
+        if not self.Visited:
+            self.add_loot(player)
+            self.Visited = True
+        else:
+            pass
 
 
 class EnemyRoom(MapTile):
@@ -187,10 +193,18 @@ class LembasBreadRoom(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.Lembas_Bread())
 
+    def add_loot(self, player):
+        player.inventory[0].amount += 1
+
     def intro_text(self):
-        return """
-        You Found some Lembas Bread, You go to pick it up
-        """
+        if not self.Visited:
+            return """
+            You Found some Lembas Bread, You go to pick it up
+            """
+        else:
+            return """
+            You find solace in this Middle's Earth Beauty
+            """
 
 
 class FindRingRoom(LootRoom):
@@ -198,10 +212,14 @@ class FindRingRoom(LootRoom):
         super().__init__(x, y, items.Ring())
 
     def intro_text(self):
-        return """
-        You hear a voice calling to you in the river.
-        The Ring calls to you, You pick it up.
-        """
+        if not self.Visited:
+            return """
+            You hear a voice calling to you in this Cave
+            The Ring calls to you, You pick it up.
+            """
+        else:
+            return """
+            Golum's Cave reeks of death"""
 
 
 class FindStaffRoom(LootRoom):
@@ -209,11 +227,17 @@ class FindStaffRoom(LootRoom):
         super().__init__(x, y, items.Staff())
 
     def intro_text(self):
-        return """
-        You notice a staff in the middle,
-        bursting with elven magic
-        you pick it up.
-        """
+        if not self.Visited:
+            return """
+            You notice a staff in the City of Rivendell,
+            bursting with elven magic
+            you pick it up.
+            """
+        else:
+            return"""
+            You feel powerful magic emulating here,
+            The City of Rivendell  bursting with its streams of life
+            """
 
 
 class FindSwordRoom(LootRoom):
@@ -221,11 +245,18 @@ class FindSwordRoom(LootRoom):
         super().__init__(x, y, items.Sword())
 
     def intro_text(self):
-        return """
-        The sword of the kings, 
-        Man has used it to slay the enemies of Middle earth,
-        You pick it up.
-        """
+        if not self.Visited:
+            return """
+            The sword of the kings in Minas Tirith, 
+            Man has used it to slay the enemies of Middle earth,
+            You pick it up.
+            """
+        else:
+            return"""
+            The great city of Minas Tirith , Home of Man,
+            City of Gondor
+            """
+
 
 
 class FindDaggerRoom(LootRoom):
@@ -233,7 +264,12 @@ class FindDaggerRoom(LootRoom):
         super().__init__(x, y, items.Dagger())
 
     def intro_text(self):
-        return """
-        You notice something shiny in the corner.
-        It's a dagger! You pick it up.
-        """
+        if not self.Visited:
+            return """
+            You notice something shiny in the of bilbo's house.
+            It's a dagger! You pick it up.
+            You wonder if Bilbo Baggins will notice it's missing
+            """
+        else:
+            return """
+            The shire, where the simple hobbits live"""

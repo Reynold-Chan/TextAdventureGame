@@ -6,7 +6,7 @@ starting_position = (0, 0)
 
 
 def generate_tiles():
-    itemsRoom = ["FindDaggerRoom","FindSwordRoom","FindStaffRoom","FindRingRoom"]
+    itemsRoom = ["FindDaggerRoom", "FindSwordRoom", "FindStaffRoom", "FindRingRoom"]
     """Automatically Generate map.txt file  6x8 grid with various map rooms"""
     x = 6
     y = 8
@@ -17,7 +17,7 @@ def generate_tiles():
         row = []
         for j in range(world.shape[1]):
             if world[i][j] <= 0.3:
-                row.append("LeambasBreadRoom")
+                row.append("LembasBreadRoom")
             elif world[i][j] <= 0.7:
                 row.append("EmptyTilePath")
             elif world[i][j] <= 0.8:
@@ -27,18 +27,18 @@ def generate_tiles():
             elif world[i][j] <= 1:
                 row.append("OgreRoom")
         World.append(row)
-    #Always start at the corners of the map
+    # Always start at the corners of the map
     np.array(World)
     World[0][0] = "StartingRoom"
-    World[x-1][y-1] = "Sauron"
-    World[x-1][0] = "Sauramon"
-    World[0][y-1] = "Balrog"
-    while itemsAdded != (len(itemsRoom)-1):
+    World[x - 1][y - 1] = "Sauron"
+    World[x - 1][0] = "Sauramon"
+    World[0][y - 1] = "Balrog"
+    while itemsAdded != (len(itemsRoom) - 1):
         if World[random.randint(1, x - 2)][random.randint(1, y - 2)] in itemsRoom:
             continue
         else:
             World[random.randint(1, x - 2)][random.randint(1, y - 2)] = itemsRoom[itemsAdded]
-            itemsAdded +=1
+            itemsAdded += 1
     np.savetxt('resources/map.txt', World, delimiter='\t', fmt="%s")
 
 

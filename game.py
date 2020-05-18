@@ -23,6 +23,8 @@ def play():
                 if action_input == action.hotkey:
                     player.do_action(action, **action.kwargs)
                     break
+        elif not player.is_alive():
+            print("The Dark Forces of Modor has Won, Middle Earth is lost")
 
 
 if __name__ == "__main__":

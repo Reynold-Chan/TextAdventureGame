@@ -20,7 +20,7 @@ class Consumable(Item):
 
 
 class Lembas_Bread(Consumable):
-    def __init__(self):
+    def __init__(self) -> object:
         super().__init__(name="Lembas Bread",
                          description="The bread of the elven people, it will nourish the soul",
                          value=15,

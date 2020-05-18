@@ -5,20 +5,21 @@ import world
 
 class Player():
     def __init__(self):
-        self.inventory = [items.Lembas_Bread(1), items.Rock()]
-        self.hp = 125
+        self.inventory = [items.Lembas_Bread(), items.Rock()]
+        self.hp = 75
         self.location_x, self.location_y = world.starting_position
         self.victory = False
         self.xp = 0
+        self.level = 1
         self.base_damage = 5
 
     def is_alive(self):
         return self.hp > 0
 
     def level_up(self):
-        if self.xp > 50:
+        if self.xp > 50*self.level:
             self.base_damage += 5
-            self.xp -= 50
+            self.xp -= 50*self.level
             print("You've gain enough knowledge of Middle Earth and understand the armies of Modor,"
                   "Your base damage is now {}".format(self.base_damage))
 

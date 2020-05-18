@@ -1,5 +1,6 @@
-LeaveCaveRoom
-GiantSpiderRoom
-EmptyCavePath
-StartingRoom
-EmptyCavePath
+StartingRoom	EmptyTilePath	GiantSpiderRoom	LembasBreadRoom	EmptyTilePath	EmptyTilePath	EmptyTilePath	Balrog
+LembasBreadRoom	EmptyTilePath	LembasBreadRoom	EmptyTilePath	Goblin	Goblin	LembasBreadRoom	Goblin
+LembasBreadRoom	EmptyTilePath	EmptyTilePath	EmptyTilePath	LembasBreadRoom	LembasBreadRoom	EmptyTilePath	LembasBreadRoom
+EmptyTilePath	EmptyTilePath	LembasBreadRoom	FindSwordRoom	OgreRoom	OgreRoom	OgreRoom	EmptyTilePath
+LembasBreadRoom	LembasBreadRoom	EmptyTilePath	LembasBreadRoom	FindStaffRoom	EmptyTilePath	FindDaggerRoom	EmptyTilePath
+Sauramon	GiantSpiderRoom	EmptyTilePath	EmptyTilePath	EmptyTilePath	EmptyTilePath	EmptyTilePath	Sauron
