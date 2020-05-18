@@ -6,7 +6,7 @@ Download Anaconda, execute game.py for the loop and enjoy in console :)
 
 ###### Theme
 
-Looking for a Lotr (LORD OF THE RING) themed text adventure ? Look no further
+Looking for a Lotr (LORD OF THE RING) themed text adventure ? Look no further, chart your path inside middle earth (should keep track of where you are and what you've seen) to map out the map.
 
 ###### Reference
 
