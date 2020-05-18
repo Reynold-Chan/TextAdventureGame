@@ -1,6 +1,9 @@
 # TextAdventureGame
 Just having fun :) Trying to implement a text adventure game in python
 
+# Running
+Download Anaconda, execute game.py for the loop and enjoy in console :) 
+
 ###### Theme
 
 Looking for a Lotr (LORD OF THE RING) themed text adventure ? Look no further
