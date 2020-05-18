@@ -3,6 +3,7 @@ from Player import Player
 
 
 def play():
+    world.generate_tiles()
     world.load_tiles()
     player = Player()
     # These lines load the starting room and display the text

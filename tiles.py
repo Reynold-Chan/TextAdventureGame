@@ -36,8 +36,9 @@ class MapTile:
 class StartingRoom(MapTile):
     def intro_text(self):
         return """
-        You find yourself if a cave with a flickering torch on the wall.
-        You can make out four paths, each equally as dark and foreboding.
+        Middle Earth is in great peril, the dark lord Sauron threatens to destroy us all
+        Defeat Sauron by finding items and gaining experience and knowledge of the dark ways
+        Middle Earth is in your hands
         """
 
     def modify_player(self, player):
@@ -80,10 +81,10 @@ class EnemyRoom(MapTile):
             return self.adjacent_moves()
 
 
-class EmptyCavePath(MapTile):
+class EmptyTilePath(MapTile):
     def intro_text(self):
         return """
-        Another unremarkable part of the cave. You must forge onwards.
+        You stop to admire the beauty of Middle Earth. Alas, You must forge onwards.
         """
 
     def modify_player(self, player):
@@ -106,25 +107,133 @@ class GiantSpiderRoom(EnemyRoom):
             """
 
 
+class OgreRoom(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Ogre())
+
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return """
+            An Ogre roars
+            """
+        else:
+            return """
+            The corpse of the giant ogre lays
+            """
+
+
+class Sauramon(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Sauramon())
+
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return """
+            Sauramon ~ the corrputed ~ laughs at your attempt to destroy Sauron
+            """
+        else:
+            return """
+            Sauramon sits lifeless in his chair
+            """
+
+
+class Balrog(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Balrog())
+
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return """
+            The Demon roars, his voice is heard all throughout Moria, Balrog appears 
+            """
+        else:
+            return """
+            The embers of the Demon Balrog is fading
+            """
+
+
+class Goblin(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Goblin())
+
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return """
+            The dark forces of Modor is near, you see a goblin camp
+            """
+        else:
+            return """
+            The corpses of the goblin lays in shock
+            """
+
+
+class Sauron(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Sauron())
+
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return """
+            Sauron lies in front, His eyes piercing through all goodness in Middle Earth
+            """
+        else:
+            return """
+            The Dark Lord Sauron is slain for now, He shall return again but for now Middle Earth is free 
+            """
+            Player.victory = True
+
+
+class LembasBreadRoom(LootRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Lembas_Bread())
+
+    def intro_text(self):
+        return """
+        You Found some Lembas Bread, You go to pick it up
+        """
+
+
+class FindRingRoom(LootRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Ring())
+
+    def intro_text(self):
+        return """
+        You hear a voice calling to you in the river.
+        The Ring calls to you, You pick it up.
+        """
+
+
+class FindStaffRoom(LootRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Staff())
+
+    def intro_text(self):
+        return """
+        You notice a staff in the middle,
+        bursting with elven magic
+        you pick it up.
+        """
+
+
+class FindSwordRoom(LootRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, items.Sword())
+
+    def intro_text(self):
+        return """
+        The sword of the kings, 
+        Man has used it to slay the enemies of Middle earth,
+        You pick it up.
+        """
+
+
 class FindDaggerRoom(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.Dagger())
 
     def intro_text(self):
         return """
-        Your notice something shiny in the corner.
+        You notice something shiny in the corner.
         It's a dagger! You pick it up.
         """
-
-
-class LeaveCaveRoom(MapTile):
-    def intro_text(self):
-        return """
-        You see a bright light in the distance...
-        ... it grows as you get closer! It's sunlight!
-
-        Victory is yours!
-        """
-
-    def modify_player(self, player):
-        player.victory = True
