@@ -37,7 +37,7 @@ class MapTile:
 class StartingRoom(MapTile):
     def intro_text(self):
         return """
-        Middle Earth is in great peril, the dark lord Sauron threatens to destroy us all
+        Middle Earth is in great peril, the Dark Lord Sauron threatens to destroy us all
         Defeat Sauron by finding items and gaining experience and knowledge of the dark ways
         Middle Earth is in your hands
         """
